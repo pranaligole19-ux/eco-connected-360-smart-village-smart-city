@@ -1,0 +1,844 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EcoConnect 360 | Smart Village & Smart City</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4fff9;
+    color:#173b2c;
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#063b2b;
+    padding:15px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#52e38a;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#52e38a;
+}
+
+/* HERO */
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(135deg,#063b2b,#087f5b,#19b77a);
+    color:white;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid #9affc0;
+    border-radius:30px;
+    margin-bottom:20px;
+    color:#baffd2;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,85px);
+    letter-spacing:3px;
+    margin-bottom:10px;
+}
+
+.hero h1 span{
+    color:#70ff9c;
+}
+
+.hero h2{
+    font-size:clamp(20px,4vw,32px);
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7;
+    max-width:700px;
+    margin:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:13px 25px;
+    background:#70ff9c;
+    color:#063b2b;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* SECTIONS */
+section{
+    padding:70px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:35px;
+    color:#075c40;
+}
+
+.section-title p{
+    margin-top:10px;
+    color:#557568;
+}
+
+/* ABOUT */
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:center;
+}
+
+.about-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 30px #0b57301a;
+}
+
+.about-box h3{
+    color:#078653;
+    margin-bottom:15px;
+}
+
+.about-box p{
+    line-height:1.8;
+}
+
+/* FEATURES */
+.features{
+    background:#eafff3;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 25px #0b57301a;
+    transition:.3s;
+    border-top:4px solid #16a765;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#075c40;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#60766d;
+    line-height:1.6;
+}
+
+/* DASHBOARD */
+.dashboard{
+    background:#063b2b;
+    color:white;
+}
+
+.dashboard .section-title h2{
+    color:#70ff9c;
+}
+
+.dashboard .section-title p{
+    color:#c3dfd1;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:20px;
+}
+
+.sensor{
+    background:#0c513d;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.sensor h3{
+    font-size:17px;
+    margin-bottom:15px;
+}
+
+.value{
+    font-size:35px;
+    font-weight:bold;
+    color:#70ff9c;
+}
+
+.status{
+    display:inline-block;
+    margin-top:10px;
+    padding:5px 12px;
+    border-radius:20px;
+    background:#164f3d;
+    font-size:12px;
+}
+
+/* WATER */
+.water-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 8px 30px #0b57301a;
+}
+
+.tank{
+    height:250px;
+    width:180px;
+    border:5px solid #075c40;
+    border-radius:15px 15px 25px 25px;
+    margin:20px auto;
+    position:relative;
+    overflow:hidden;
+    background:#eefaf5;
+}
+
+.water{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:70%;
+    background:#39a9e8;
+    animation:wave 2s infinite ease-in-out;
+}
+
+@keyframes wave{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.water-text{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    top:45%;
+    color:white;
+    font-size:25px;
+    font-weight:bold;
+    z-index:2;
+}
+
+.alert{
+    text-align:center;
+    padding:12px;
+    background:#fff3cd;
+    color:#765b00;
+    border-radius:10px;
+}
+
+/* PROCESS */
+.process{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.step{
+    background:white;
+    padding:20px;
+    min-width:150px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 20px #0b57301a;
+}
+
+.arrow{
+    font-size:30px;
+    color:#0a9a61;
+}
+
+/* IMPACT */
+.impact{
+    background:#eafff3;
+}
+
+.impact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+    text-align:center;
+}
+
+.impact-box{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+}
+
+.impact-box strong{
+    display:block;
+    font-size:35px;
+    color:#07945b;
+    margin-bottom:8px;
+}
+
+/* ROADMAP */
+.roadmap{
+    max-width:800px;
+    margin:auto;
+}
+
+.road{
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #13a967;
+    background:white;
+    border-radius:0 15px 15px 0;
+    box-shadow:0 5px 20px #0b57301a;
+}
+
+.road h3{
+    color:#078653;
+    margin-bottom:5px;
+}
+
+/* FOOTER */
+footer{
+    background:#04281e;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer span{
+    color:#70ff9c;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    nav{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    nav a{
+        margin:0 5px;
+        font-size:12px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:55px 5%;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .process{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">ECO<span>CONNECT</span> 360</div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Solutions</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#process">Process</a>
+        <a href="#roadmap">Future</a>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🌱 IoT-Based Smart Village + Smart City
+        </div>
+
+        <h1>ECO<span>CONNECT</span> 360</h1>
+
+        <h2>Green • Clean • Connected</h2>
+
+        <p>
+            A smart and sustainable technology platform connecting
+            Water, Waste, Energy, Agriculture, Environment,
+            Travel and Community services.
+        </p>
+
+        <a href="#dashboard" class="btn">
+            Explore Smart Dashboard ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="section-title">
+        <h2>🌍 About EcoConnect 360</h2>
+        <p>Technology for a smarter and more sustainable community</p>
+    </div>
+
+    <div class="about">
+
+        <div class="about-box">
+
+            <h3>💡 The Problem</h3>
+
+            <p>
+                Villages and communities face problems such as
+                water wastage, overflowing waste bins,
+                unnecessary electricity consumption,
+                agricultural challenges, environmental changes
+                and lack of real-time information.
+            </p>
+
+        </div>
+
+        <div class="about-box">
+
+            <h3>🚀 Our Solution</h3>
+
+            <p>
+                EcoConnect 360 uses sensors, ESP32, Wi-Fi and
+                a smart dashboard to collect information,
+                analyze conditions and provide alerts for
+                better decision-making and resource management.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features" id="features">
+
+    <div class="section-title">
+        <h2>🌱 Smart Solutions</h2>
+        <p>One platform connecting multiple community needs</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">💧</div>
+            <h3>Smart Water</h3>
+            <p>
+                Monitor water levels and detect tank overflow
+                to reduce water wastage.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">♻️</div>
+            <h3>Smart Waste</h3>
+            <p>
+                Monitor waste-bin levels and improve
+                cleanliness and waste management.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Smart Energy</h3>
+            <p>
+                Explore community-based electricity generation
+                using motion and mechanical energy.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌾</div>
+            <h3>Smart Agriculture</h3>
+            <p>
+                Support farmers with environmental,
+                rainfall and agricultural information.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌧️</div>
+            <h3>Environment</h3>
+            <p>
+                Monitor rainfall and air conditions to support
+                better environmental decisions.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚦</div>
+            <h3>Smart Travel</h3>
+            <p>
+                Provide useful local transportation,
+                location and community information.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏥</div>
+            <h3>Emergency Support</h3>
+            <p>
+                Help essential services such as hospitals
+                during local electricity or environmental problems.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏫</div>
+            <h3>Community</h3>
+            <p>
+                Connect schools, hospitals, events and
+                important community activities.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WATER DEMO -->
+<section>
+
+    <div class="section-title">
+        <h2>💧 Smart Water Overflow Demo</h2>
+        <p>Example of how EcoConnect 360 detects water overflow</p>
+    </div>
+
+    <div class="water-box">
+
+        <div class="tank">
+
+            <div class="water"></div>
+
+            <div class="water-text">
+                70%
+            </div>
+
+        </div>
+
+        <div class="alert">
+            ⚠️ Water Level Monitoring Active
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section class="dashboard" id="dashboard">
+
+    <div class="section-title">
+        <h2>📊 Smart Community Dashboard</h2>
+        <p>Real-time style monitoring interface</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="sensor">
+            <h3>💧 Water Level</h3>
+            <div class="value" id="waterValue">70%</div>
+            <div class="status">Monitoring</div>
+        </div>
+
+        <div class="sensor">
+            <h3>♻️ Waste Bin</h3>
+            <div class="value" id="wasteValue">45%</div>
+            <div class="status">Normal</div>
+        </div>
+
+        <div class="sensor">
+            <h3>🌧️ Rainfall</h3>
+            <div class="value">32 mm</div>
+            <div class="status">Updated</div>
+        </div>
+
+        <div class="sensor">
+            <h3>🌱 Soil</h3>
+            <div class="value">68%</div>
+            <div class="status">Healthy</div>
+        </div>
+
+        <div class="sensor">
+            <h3>🌬️ Air</h3>
+            <div class="value">Good</div>
+            <div class="status">Safe</div>
+        </div>
+
+        <div class="sensor">
+            <h3>⚡ Energy</h3>
+            <div class="value">82 W</div>
+            <div class="status">Generating</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROCESS -->
+<section id="process">
+
+    <div class="section-title">
+        <h2>🔄 How EcoConnect 360 Works</h2>
+        <p>From sensor data to useful community action</p>
+    </div>
+
+    <div class="process">
+
+        <div class="step">
+            <h3>📡 Sensors</h3>
+            <p>Collect data</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+            <h3>🔌 ESP32</h3>
+            <p>Processes data</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+            <h3>📶 Wi-Fi</h3>
+            <p>Transfers data</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+            <h3>📊 Dashboard</h3>
+            <p>Displays data</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+            <h3>🔔 Alert</h3>
+            <p>Action is taken</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- IMPACT -->
+<section class="impact">
+
+    <div class="section-title">
+        <h2>🌟 Expected Impact</h2>
+        <p>Making everyday resources smarter</p>
+    </div>
+
+    <div class="impact-grid">
+
+        <div class="impact-box">
+            <strong>💧</strong>
+            Reduce Water Wastage
+        </div>
+
+        <div class="impact-box">
+            <strong>♻️</strong>
+            Improve Cleanliness
+        </div>
+
+        <div class="impact-box">
+            <strong>⚡</strong>
+            Support Energy Needs
+        </div>
+
+        <div class="impact-box">
+            <strong>🌾</strong>
+            Support Farmers
+        </div>
+
+        <div class="impact-box">
+            <strong>🌱</strong>
+            Protect Environment
+        </div>
+
+        <div class="impact-box">
+            <strong>🏘️</strong>
+            Connect Community
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ROADMAP -->
+<section id="roadmap">
+
+    <div class="section-title">
+        <h2>🚀 Future Roadmap</h2>
+        <p>From prototype to real-world smart community</p>
+    </div>
+
+    <div class="roadmap">
+
+        <div class="road">
+            <h3>Phase 1 — Prototype</h3>
+            <p>
+                Develop sensors, ESP32 modules and basic dashboard.
+            </p>
+        </div>
+
+        <div class="road">
+            <h3>Phase 2 — Smart Monitoring</h3>
+            <p>
+                Add water, waste, agriculture and environment monitoring.
+            </p>
+        </div>
+
+        <div class="road">
+            <h3>Phase 3 — Community Integration</h3>
+            <p>
+                Connect important community services and local information.
+            </p>
+        </div>
+
+        <div class="road">
+            <h3>Phase 4 — Smart Village Expansion</h3>
+            <p>
+                Deploy the system across multiple villages and communities.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>🌱 ECO<span>CONNECT</span> 360</h2>
+
+    <p style="margin-top:10px;">
+        IoT-Based Smart Village + Smart City
+    </p>
+
+    <p style="margin-top:20px;">
+        Green • Clean • Connected
+    </p>
+
+    <p style="margin-top:20px;">
+        © 2026 EcoConnect 360 Project
+    </p>
+
+</footer>
+
+
+<script>
+
+/* LIVE-STYLE DASHBOARD */
+
+setInterval(function(){
+
+    let water = Math.floor(Math.random() * 15) + 65;
+    let waste = Math.floor(Math.random() * 20) + 35;
+
+    document.getElementById("waterValue").innerText =
+        water + "%";
+
+    document.getElementById("wasteValue").innerText =
+        waste + "%";
+
+},3000);
+
+</script>
+
+</body>
+</html>        
